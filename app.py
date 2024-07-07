@@ -196,7 +196,7 @@ def generate_unique_user_id():
             generated_ids.add(user_id)
             return user_id
 
-@app.route('/api/recommend/demographic', methods=['POST'])
+@app.route('/api/recommend/demographic/', methods=['POST'])
 def recommend_demographic():
     data = request.json
     user_id = generate_unique_user_id()
@@ -249,7 +249,7 @@ def recommend_demographic():
     recommendations = recommend_based_on_demographics(user_id)
     return jsonify({'recommendations': recommendations.to_dict(orient='records')})
 
-@app.route('/api/recommend/liked', methods=['POST'])
+@app.route('/api/recommend/liked/', methods=['POST'])
 def recommend_liked():
     data = request.json
     user_id = generate_unique_user_id()
@@ -292,7 +292,7 @@ def recommend_liked():
     recommendations = recommend_based_on_cf(user_id)
     return jsonify({'recommendations': recommendations.to_dict(orient='records')})
 
-@app.route('/api/recommend/genre', methods=['POST'])
+@app.route('/api/recommend/genre/', methods=['POST'])
 def recommend_genre():
     data = request.json
     user_id = generate_unique_user_id()
@@ -333,7 +333,7 @@ def recommend_genre():
     recommendations = recommend_based_on_genre(user_id)
     return jsonify({'recommendations': recommendations.to_dict(orient='records')})
 
-@app.route('/api/recommend/cast-director', methods=['POST'])
+@app.route('/api/recommend/cast-director/', methods=['POST'])
 def recommend_cast_and_director():
     data = request.json
     user_id = generate_unique_user_id()
@@ -374,7 +374,7 @@ def recommend_cast_and_director():
 
     return jsonify({'recommendations': cast_recommendations.to_dict(orient='records')})
 
-@app.route('/api/recommend/director', methods=['POST'])
+@app.route('/api/recommend/director/', methods=['POST'])
 def recommend_sdirector():
     data = request.json
     user_id = generate_unique_user_id()
@@ -414,14 +414,14 @@ def recommend_sdirector():
 
     return jsonify({'recommendations': director_recommendations.to_dict(orient='records')})
 
-@app.route('/api/movies', methods=['GET'])
+@app.route('/api/movies/', methods=['GET'])
 def get_movies():
     with open('movies.json', 'r') as file:
         movies = json.load(file)
     return jsonify(movies)
 
 
-@app.route('/api/dataset', methods=['GET'])
+@app.route('/api/dataset/', methods=['GET'])
 def show_dataset():
     with open('movies.json', 'r') as file:
         movies = json.load(file)
